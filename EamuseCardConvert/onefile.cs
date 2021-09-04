@@ -265,7 +265,7 @@ public static class CardCipher
         {
             //  We can determine the card type based on the first two values of the
             //  card ID.
-            int cardType = cardID[..2].ToUpper() switch
+            public static int cardType = cardID[..2].ToUpper() switch
             {
                 "E0" => 1,
                 "01" => 2,

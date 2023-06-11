@@ -1,2 +1,1 @@
-Thanks to manbeardgames.
-This project run at https://rextester.com/
+Thanks to manbeardgames. I'm just started studing C#, so I'm not good at C#, so I converted this to Python. Almost funcs and vars is same to C# file of manbeardgames. Sorry for no annotation. Please check cs file to annotation.

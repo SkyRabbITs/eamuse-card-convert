@@ -511,6 +511,32 @@ def eAMEMuCardNo2(cardID:str):
         for i in range(32):
             eAMEMuCardNo2(cardID + _valid_chars[i])
 
+def eAMEMuCardNoMulti3(cardID1:str, cardID2:str, tqdm_func, global_tqdm, tmp2=None, tmp3=None, tmp4=None, tmp5=None, tmp6=None, tmp7=None, tmp8=None, tmp9=None):
+    #print(cardID)
+    #print(tmp2, tmp3, tmp4, tmp5, tmp6, tmp7, tmp8, tmp9)
+    if len(cardID1) == 12:
+        # shm = shared_memory.SharedMemory(name='pshm_for_pbar_soramehato')
+        # buffer = shm.buf
+        # pbar = buffer[:]
+        try:
+            resultSSID = decodeCardID(cardID1+cardID2)
+        except Exception:
+           return
+        if resultSSID.startswith('012e'):
+            # resultCardID = encodeCardID(resultSSID)
+            #if resultCardID.endswith(cardID2):
+            print(f'카드번호 {cardID1[:4]}-{cardID1[4:8]}-{cardID1[8:12]}-{cardID2} = SSID {resultSSID[:4]}:{resultSSID[4:8]}:{resultSSID[8:12]}:{resultSSID[12:]}')
+        # shm.close()
+    elif len(cardID1) == 11:
+        for i in range(0,32,2):
+            newCardID = cardID1 + _valid_chars[i]
+            eAMEMuCardNoMulti3(newCardID, cardID2, tqdm_func, global_tqdm)
+        global_tqdm.update(16)
+    else:
+        for i in range(32):
+            newCardID = cardID1 + _valid_chars[i]
+            eAMEMuCardNoMulti3(newCardID, cardID2, tqdm_func, global_tqdm)
+
 def eAMEMuCardNoMulti(cardID:str, tqdm_func, global_tqdm, tmp2=None, tmp3=None, tmp4=None, tmp5=None, tmp6=None, tmp7=None, tmp8=None, tmp9=None):
     #print(cardID)
     #print(tmp2, tmp3, tmp4, tmp5, tmp6, tmp7, tmp8, tmp9)
@@ -632,6 +658,31 @@ if __name__ == '__main__':
             testCardID.append(cardID + _valid_chars[i])
         with tqdm(total=int((32 ** (13-len(cardID)))/2) if len(cardID) <= 12 else 1) as global_progress:
             tasks = [(eAMEMuCardNoMulti, [testCardID[i]]) for i in range(len(testCardID))]
+            pool.map(global_progress, tasks, on_error, on_done)
+    elif arg == '8':
+        from tqdm import tqdm
+        from time import sleep
+        from tqdm_multiprocess import TqdmMultiProcessPool
+        cardID = input('이어뮤 카드 번호 앞부분을 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ')
+        cardID = cardID.upper()
+        cardID = cardID.replace(':','')
+        cardID = cardID.replace(' ','')
+        cardID = cardID.replace('-','')
+        cardID = cardID.replace('I','1')
+        cardID = cardID.replace('O','0')
+        cardID2 = input('이어뮤 카드 번호 뒷부분을 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ')
+        cardID2 = cardID2.upper()
+        cardID2 = cardID2.replace(':','')
+        cardID2 = cardID2.replace(' ','')
+        cardID2 = cardID2.replace('-','')
+        cardID2 = cardID2.replace('I','1')
+        cardID2 = cardID2.replace('O','0')
+        pool = TqdmMultiProcessPool(8)
+        testCardID = []
+        for i in range(0,32):
+            testCardID.append(cardID + _valid_chars[i])
+        with tqdm(total=int((32 ** (12-len(cardID)))/2) if len(cardID) <= 12 else 1) as global_progress:
+            tasks = [(eAMEMuCardNoMulti3, [testCardID[i], cardID2]) for i in range(len(testCardID))]
             pool.map(global_progress, tasks, on_error, on_done)
         
         # elif arg == '0':

@@ -1,5 +1,3 @@
-from multiprocessing import Pool
-from multiprocessing import shared_memory
 from eamu_lib import *
 
 def on_error(result):

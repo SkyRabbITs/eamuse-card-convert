@@ -627,6 +627,25 @@ if __name__ == '__main__':
             .replace('O','0')
         pbar = tqdm(total=int((32 ** (13-len(cardID)))/2) if len(cardID) <= 12 else 1)
         eAMEMuCardNoSave(cardID)
+    elif arg == '6':
+        import aime_tools as aimetools
+        ver = '00'
+        pad = '0000000000'
+        access = hex(int(input('디코딩된 엑세스 코드를 입력해주세요. 이 코드는 이어뮤 카드 번호와는 다릅니다: ')))
+        if access[0:1].lower() == '0x':
+            access = access[2:]
+        while len(access) < 20:
+            access = '0' + access
+        decrypted = ver + pad + access
+        result = aimetools.encrypt(decrypted.encode()).hex()
+        print(f'암호화된 데이터 (카드 내 S-PAD0 영역): {result})')
+    elif arg == '7':
+        import aime_tools as aimetools
+        access = hex(int(input('엑세스 코드로부터 추출한 엑세스 인덱스를 입력해주세요: ')))
+        if access[0:1].lower() == '0x':
+            access = access[2:]
+        decrypted = aimetools.decrypt(access.encode())
+        print(f'암호화 해제된 데이터: {decrypted}, 버전: 0')
     elif arg == '9':
         from tqdm import tqdm
         from time import sleep
@@ -671,7 +690,7 @@ if __name__ == '__main__':
             .replace('I','1')
             .replace('O','0')
         cardID2 = input('이어뮤 카드 번호 뒷부분을 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ')
-        cardID = cardID.upper()
+        cardID2 = cardID.upper()
             .replace(':','')
             .replace(' ','')
             .replace('-','')

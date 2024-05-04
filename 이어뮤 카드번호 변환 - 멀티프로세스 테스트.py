@@ -5,28 +5,28 @@ from multiprocessing import shared_memory
 _key = [
     0x20d0d03c, 0x868ecb41, 0xbcd89c84, 0x4c0e0d0d,
     0x84fc30ac, 0x4cc1890e, 0xfc5418a4, 0x02c50f44,
-	0x68acb4e0, 0x06cd4a4e, 0xcc28906c, 0x4f0c8ac0,
-	0xb03ca468, 0x884ac7c4, 0x389490d8, 0xcf80c6c2,
-	0x58d87404, 0xc48ec444, 0xb4e83c50, 0x498d0147,
-	0x64f454c0, 0x4c4701c8, 0xec302cc4, 0xc6c949c1,
-	0xc84c00f0, 0xcdcc49cc, 0x883c5cf4, 0x8b0fcb80,
-	0x703cc0b0, 0xcb820a8d, 0x78804c8c, 0x4fca830e,
-	0x80d0f03c, 0x8ec84f8c, 0x98c89c4c, 0xc80d878f,
-	0x54bc949c, 0xc801c5ce, 0x749078dc, 0xc3c80d46,
-	0x2c8070f0, 0x0cce4dcf, 0x8c3874e4, 0x8d448ac3,
-	0x987cac70, 0xc0c20ac5, 0x288cfc78, 0xc28543c8,
-	0x4c8c7434, 0xc50e4f8d, 0x8468f4b4, 0xcb4a0307,
-	0x2854dc98, 0x48430b45, 0x6858fce8, 0x4681cd49,
-	0xd04808ec, 0x458d0fcb, 0xe0a48ce4, 0x880f8fce,
-	0x7434b8fc, 0xce080a8e, 0x5860fc6c, 0x46c886cc,
-	0xd01098a4, 0xce090b8c, 0x1044cc2c, 0x86898e0f,
-	0xd0809c3c, 0x4a05860f, 0x54b4f80c, 0x4008870e,
-	0x1480b88c, 0x0ac8854f, 0x1c9034cc, 0x08444c4e,
-	0x0cb83c64, 0x41c08cc6, 0x1c083460, 0xc0c603ce,
-	0x2ca0645c, 0x818246cb, 0x0408e454, 0xc5464487,
-	0x88607c18, 0xc1424187, 0x284c7c90, 0xc1030509,
-	0x40486c94, 0x4603494b, 0xe0404ce4, 0x4109094d,
-	0x60443ce4, 0x4c0b8b8d, 0xe054e8bc, 0x02008e89
+    0x68acb4e0, 0x06cd4a4e, 0xcc28906c, 0x4f0c8ac0,
+    0xb03ca468, 0x884ac7c4, 0x389490d8, 0xcf80c6c2,
+    0x58d87404, 0xc48ec444, 0xb4e83c50, 0x498d0147,
+    0x64f454c0, 0x4c4701c8, 0xec302cc4, 0xc6c949c1,
+    0xc84c00f0, 0xcdcc49cc, 0x883c5cf4, 0x8b0fcb80,
+    0x703cc0b0, 0xcb820a8d, 0x78804c8c, 0x4fca830e,
+    0x80d0f03c, 0x8ec84f8c, 0x98c89c4c, 0xc80d878f,
+    0x54bc949c, 0xc801c5ce, 0x749078dc, 0xc3c80d46,
+    0x2c8070f0, 0x0cce4dcf, 0x8c3874e4, 0x8d448ac3,
+    0x987cac70, 0xc0c20ac5, 0x288cfc78, 0xc28543c8,
+    0x4c8c7434, 0xc50e4f8d, 0x8468f4b4, 0xcb4a0307,
+    0x2854dc98, 0x48430b45, 0x6858fce8, 0x4681cd49,
+    0xd04808ec, 0x458d0fcb, 0xe0a48ce4, 0x880f8fce,
+    0x7434b8fc, 0xce080a8e, 0x5860fc6c, 0x46c886cc,
+    0xd01098a4, 0xce090b8c, 0x1044cc2c, 0x86898e0f,
+    0xd0809c3c, 0x4a05860f, 0x54b4f80c, 0x4008870e,
+    0x1480b88c, 0x0ac8854f, 0x1c9034cc, 0x08444c4e,
+    0x0cb83c64, 0x41c08cc6, 0x1c083460, 0xc0c603ce,
+    0x2ca0645c, 0x818246cb, 0x0408e454, 0xc5464487,
+    0x88607c18, 0xc1424187, 0x284c7c90, 0xc1030509,
+    0x40486c94, 0x4603494b, 0xe0404ce4, 0x4109094d,
+    0x60443ce4, 0x4c0b8b8d, 0xe054e8bc, 0x02008e89
 ]
 
 _lut_a0 = [
@@ -576,19 +576,19 @@ if __name__ == '__main__':
     if arg == '1':
         cardID = input('이어뮤 카드 번호를 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ')
         cardID = cardID.upper()
-        cardID = cardID.replace(':','')
-        cardID = cardID.replace(' ','')
-        cardID = cardID.replace('-','')
-        cardID = cardID.replace('I','1')
-        cardID = cardID.replace('O','0')
+            .replace(':','')
+            .replace(' ','')
+            .replace('-','')
+            .replace('I','1')
+            .replace('O','0')
         resultCardID = decodeCardID(cardID)
         print(f'변환된 SSID는 {resultCardID[:4]}:{resultCardID[4:8]}:{resultCardID[8:12]}:{resultCardID[12:]}입니다.')
     elif arg == '2':
         cardID = input('SSID 16글자를 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : 01:23:45:67:89:AB:CD:EF] : ')
         cardID = cardID.upper()
-        cardID = cardID.replace(':','')
-        cardID = cardID.replace(' ','')
-        cardID = cardID.replace('-','')
+            .replace(':','')
+            .replace(' ','')
+            .replace('-','')
         resultCardID = encodeCardID(cardID)
         print(f'변환된 카드 번호는 {resultCardID[:4]}-{resultCardID[4:8]}-{resultCardID[8:12]}-{resultCardID[12:]}입니다.')
     elif arg == '3':
@@ -607,11 +607,11 @@ if __name__ == '__main__':
         print('이어뮤 카드 번호를 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ',end='')
         cardID = input()
         cardID = cardID.upper()
-        cardID = cardID.replace(':','')
-        cardID = cardID.replace(' ','')
-        cardID = cardID.replace('-','')
-        cardID = cardID.replace('I','1')
-        cardID = cardID.replace('O','0')
+            .replace(':','')
+            .replace(' ','')
+            .replace('-','')
+            .replace('I','1')
+            .replace('O','0')
         pbar = tqdm(total=int((32 ** (13-len(cardID)))/2) if len(cardID) <= 12 else 1)
         eAMEMuCardNo(cardID)
     elif arg == '5':
@@ -620,24 +620,43 @@ if __name__ == '__main__':
         print('이어뮤 카드 번호를 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ',end='')
         cardID = input()
         cardID = cardID.upper()
-        cardID = cardID.replace(':','')
-        cardID = cardID.replace(' ','')
-        cardID = cardID.replace('-','')
-        cardID = cardID.replace('I','1')
-        cardID = cardID.replace('O','0')
+            .replace(':','')
+            .replace(' ','')
+            .replace('-','')
+            .replace('I','1')
+            .replace('O','0')
         pbar = tqdm(total=int((32 ** (13-len(cardID)))/2) if len(cardID) <= 12 else 1)
         eAMEMuCardNoSave(cardID)
+    elif arg == '6':
+        import aime_tools as aimetools
+        ver = '00'
+        pad = '0000000000'
+        access = hex(int(input('디코딩된 엑세스 코드를 입력해주세요. 이 코드는 이어뮤 카드 번호와는 다릅니다: ')))
+        if access[0:1].lower() == '0x':
+            access = access[2:]
+        while len(access) < 20:
+            access = '0' + access
+        decrypted = ver + pad + access
+        result = aimetools.encrypt(decrypted.encode()).hex()
+        print(f'암호화된 데이터 (카드 내 S-PAD0 영역): {result})')
+    elif arg == '7':
+        import aime_tools as aimetools
+        access = hex(int(input('엑세스 코드로부터 추출한 엑세스 인덱스를 입력해주세요: ')))
+        if access[0:1].lower() == '0x':
+            access = access[2:]
+        decrypted = aimetools.decrypt(access.encode())
+        print(f'암호화 해제된 데이터: {decrypted}, 버전: 0')
     elif arg == '9':
         from tqdm import tqdm
         from time import sleep
         print('이어뮤 카드 번호를 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ',end='')
         cardID = input()
         cardID = cardID.upper()
-        cardID = cardID.replace(':','')
-        cardID = cardID.replace(' ','')
-        cardID = cardID.replace('-','')
-        cardID = cardID.replace('I','1')
-        cardID = cardID.replace('O','0')
+            .replace(':','')
+            .replace(' ','')
+            .replace('-','')
+            .replace('I','1')
+            .replace('O','0')
         pbar = tqdm(total=32 ** (13-len(cardID)))
         eAMEMuCardNo2(cardID)
     elif arg == '0':
@@ -647,11 +666,11 @@ if __name__ == '__main__':
         print('이어뮤 카드 번호를 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ',end='')
         cardID = input()
         cardID = cardID.upper()
-        cardID = cardID.replace(':','')
-        cardID = cardID.replace(' ','')
-        cardID = cardID.replace('-','')
-        cardID = cardID.replace('I','1')
-        cardID = cardID.replace('O','0')
+            .replace(':','')
+            .replace(' ','')
+            .replace('-','')
+            .replace('I','1')
+            .replace('O','0')
         pool = TqdmMultiProcessPool(8)
         testCardID = []
         for i in range(0,32):
@@ -665,18 +684,18 @@ if __name__ == '__main__':
         from tqdm_multiprocess import TqdmMultiProcessPool
         cardID = input('이어뮤 카드 번호 앞부분을 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ')
         cardID = cardID.upper()
-        cardID = cardID.replace(':','')
-        cardID = cardID.replace(' ','')
-        cardID = cardID.replace('-','')
-        cardID = cardID.replace('I','1')
-        cardID = cardID.replace('O','0')
+            .replace(':','')
+            .replace(' ','')
+            .replace('-','')
+            .replace('I','1')
+            .replace('O','0')
         cardID2 = input('이어뮤 카드 번호 뒷부분을 입력해주세요. 구분자(-, :)와 띄어쓰기는 자동으로 제거됩니다. [예시 : ABCD-EFGH-IJKL-MNOP] : ')
-        cardID2 = cardID2.upper()
-        cardID2 = cardID2.replace(':','')
-        cardID2 = cardID2.replace(' ','')
-        cardID2 = cardID2.replace('-','')
-        cardID2 = cardID2.replace('I','1')
-        cardID2 = cardID2.replace('O','0')
+        cardID2 = cardID.upper()
+            .replace(':','')
+            .replace(' ','')
+            .replace('-','')
+            .replace('I','1')
+            .replace('O','0')
         pool = TqdmMultiProcessPool(8)
         testCardID = []
         for i in range(0,32):
